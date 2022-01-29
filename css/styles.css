@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --firs-color: #0EA2F6;
+    --secondary-color: #3D3A50;
+    --body-color: #303041;
+
+    --text-color: #F4FCFE;
+
+    --font-text: 'Poppins', sans-serif;
+
+    --big: 80px;
+    --header: 40px;
+    --title: 26px;
+    --subtitle: 21px;
+    --body-text: 20px;
+    --details: 16px;
+}
+
+@media screen and (max-width: 350px) {
+    :root {
+        --big: 60px;
+        --header: 30px;
+        --title: 20px;
+        --subtitle: 18px;
+        --body-text: 16px;
+        --details: 13px;
+    }
+}
+
+body {
+    font-family: var(--font-text);
+    color: var(--text-color);
+    background-color: var(--body-color);
+}
+
+.app-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 15px 15px;
+}
+
+header input {
+    width: 100%;
+    max-width: 350px;
+    max-height: 50px;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    background-color: var(--secondary-color) .9;
+    border-radius: 5px;
+    border-bottom: 3px solid var(--text-color);
+    
+    color: var(--text-color);
+    font-family: var(--font-text);
+    font-size: var(--title);
+    font-weight: 500;
+    transition: 0.2s ease-out;
+}
+
+header input:focus {
+    border-bottom: 3px solid var(--firs-color);
+    background-color: var(--secondary-color);
+}
+  
+main {
+    flex: 1 1 100%;
+    padding: 25px 25px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.location .city {
+    color: var(--text-color);
+    font-size: var(--title);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+  
+.location .date {
+    color: var(--text-color);
+    font-size: var(--details);
+}
+
+.current .icon {
+    margin-top: -20px;
+    margin-bottom: -50px;
+}
+  
+.current .temp {
+    color: var(--text-color);
+    font-size: var(--big);
+    font-weight: 900;
+}
+  
+.current .temp span {
+    font-weight: 500;
+}
+  
+.current .weather {
+    color: var(--text-color);
+    font-size: var(--title);
+    font-weight: 700;
+}
+  
+.current .hi-low {
+    color: var(--text-color);
+    font-size: var(--subtitle);
+    font-weight: 500;
+}
+
+footer {
+    width: 100%;
+    height: 40px;
+}
+
+footer button {
+    background: none;
+    border: none;
+    margin-left: 15px;
+}
+
+footer i {
+    font-size: var(--title);
+    color: var(--text-color);
+}
+
+footer button:hover i {
+    color: var(--firs-color);
+}

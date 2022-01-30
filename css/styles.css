@@ -48,7 +48,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px 15px 15px;
+    padding: 20px 15px 15px;
 }
 
 header input {
@@ -76,11 +76,24 @@ header input:focus {
   
 main {
     flex: 1 1 100%;
-    padding: 25px 25px 50px;
+    padding: 25px 25px 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+.card {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    background: url("/img/night.jpg");
+    background-size: cover;
+    padding: 15px 15px;
+    box-shadow:  13px 13px 0px #5a5a5a,
+             -13px -13px 0px #ffffff;
+    margin-top: 20px;
+    transition: 0.2s ease-out;
 }
 
 .location .city {
@@ -89,6 +102,16 @@ main {
     font-weight: 500;
     margin-bottom: 5px;
 }
+
+.location .city sub {
+    vertical-align: super;
+    background-color: var(--firs-color);
+    color: var(--text-color);
+    padding: 2px 5px;
+    margin-left: 10px;
+    border-radius: 10px;
+    font-size: var(--details);
+}
   
 .location .date {
     color: var(--text-color);
@@ -96,8 +119,12 @@ main {
 }
 
 .current .icon {
-    margin-top: -20px;
-    margin-bottom: -50px;
+    width: 150px;
+    height: 150px;
+    max-height: 100%;
+    margin-top: 10px;
+    margin-bottom: -10px;
+    filter: invert(1);
 }
   
 .current .temp {
@@ -106,8 +133,10 @@ main {
     font-weight: 900;
 }
   
-.current .temp span {
+.current .temp sub {
+    font-size: var(--header);
     font-weight: 500;
+    vertical-align: super;
 }
   
 .current .weather {

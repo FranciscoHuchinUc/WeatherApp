@@ -33,18 +33,21 @@ function getResults (query) {
 }
 
 function displayResults (weather) {
+
+    periodoTiempo(weather.weather[0].icon);
+
     let city = document.querySelector('.location .city');
-    city.innerText = `${weather.name}, ${weather.sys.country}`;
+    city.innerHTML = `${weather.name}<sub>${weather.sys.country}</sub>`;
     
     let now = new Date();
     let date = document.querySelector('.location .date');
     date.innerText = dateBuilder(now);
 
     let icon = document.querySelector('.current .icon');
-    icon.setAttribute('src', `https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`);
+    icon.setAttribute('src', `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather.weather[0].icon}.svg`);
     
     let temp = document.querySelector('.current .temp');
-    temp.innerHTML = `${Math.round(weather.main.temp)}<span>°c</span>`;
+    temp.innerHTML = `${Math.round(weather.main.temp)}<sub>°c</sub>`;
     
     let weather_el = document.querySelector('.current .weather');
     weather_el.innerText = weather.weather[0].main;
@@ -83,4 +86,13 @@ function toastAlert () {
         icon: 'error',
         title: 'Wrong city'
     })
+}
+
+function periodoTiempo (tiempo) {
+    const card = document.querySelector('.card');
+    if (tiempo.includes('n')) {
+        card.style.backgroundImage = 'url(./img/night.jpg)';
+    } else if (tiempo.includes('d')) {
+        card.style.backgroundImage = 'url(./img/day.jpg)';
+    }
 }

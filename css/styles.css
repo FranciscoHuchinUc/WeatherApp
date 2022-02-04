@@ -5,79 +5,90 @@
 }
 
 :root {
-    --firs-color: #0EA2F6;
+    --firs-color: #2978B5;
     --secondary-color: #3D3A50;
-    --body-color: #303041;
+    --input-color: #F2F2F2;
+    --body-color: #FFFFFF;
 
-    --text-color: #F4FCFE;
+    --text-color: #FFFFFF;
 
     --font-text: 'Poppins', sans-serif;
 
-    --big: 80px;
-    --header: 40px;
-    --title: 26px;
-    --subtitle: 21px;
-    --body-text: 20px;
-    --details: 16px;
+    --search: 18px;
+    --date: 22px;
+    --city: 32px;
+    --temp: 80px;
+    --weather: 32px;
+    --hi-low: 26px;
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 460px) {
+    header {
+        flex-direction: column;
+    }
+
+    .card {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 650px) {
     :root {
-        --big: 60px;
-        --header: 30px;
-        --title: 20px;
-        --subtitle: 18px;
-        --body-text: 16px;
-        --details: 13px;
+        --search: 16px;
+        --date: 16px;
+        --city: 26px;
+        --temp: 60px;
+        --weather: 28px;
+        --hi-low: 22px;
     }
 }
 
 body {
     font-family: var(--font-text);
+    font-weight: bold;
     color: var(--text-color);
     background-color: var(--body-color);
 }
 
-.app-wrap {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
 header {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 20px 15px 15px;
+    height: 6em;
+    max-width: 1100px;
+    width: 95%;
+    margin: 0 auto;
+    justify-content: space-between;
 }
 
 header input {
     width: 100%;
     max-width: 350px;
-    max-height: 50px;
+    max-height: 35px;
     padding: 10px 15px;
     border: none;
     outline: none;
-    background-color: var(--secondary-color) .9;
+    background-color: var(--input-color);
     border-radius: 5px;
-    border-bottom: 3px solid var(--text-color);
+    border-bottom: 3px solid var(--secondary-color);
     
-    color: var(--text-color);
+    color: var(--secondary-color);
     font-family: var(--font-text);
-    font-size: var(--title);
-    font-weight: 500;
+    font-size: var(--search);
     transition: 0.2s ease-out;
 }
 
 header input:focus {
     border-bottom: 3px solid var(--firs-color);
-    background-color: var(--secondary-color);
+}
+
+h3 {
+    font-size: 24px;
+    color: var(--firs-color);
 }
   
 main {
-    flex: 1 1 100%;
-    padding: 25px 25px 25px;
     display: flex;
+    flex: 1 1 100%;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -85,70 +96,56 @@ main {
 
 .card {
     width: 100%;
-    max-width: 300px;
-    border-radius: 10px;
-    background: url("/img/night.jpg");
-    background-size: cover;
+    max-width: clamp(250px, 50%, 350px);
     padding: 15px 15px;
-    box-shadow:  13px 13px 0px #5a5a5a,
-             -13px -13px 0px #ffffff;
-    margin-top: 20px;
     transition: 0.2s ease-out;
+    border-radius: 15px;
+}
+
+.day {
+    background: linear-gradient(180deg, #68B9D4 0%, #3FACCE 100%);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.night {
+    background: linear-gradient(180deg, #464377 0%, #314F71 100%);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.location .date {
+    color: var(--text-color);
+    font-size: var(--date);
 }
 
 .location .city {
     color: var(--text-color);
-    font-size: var(--title);
+    font-size: var(--city);
     font-weight: 500;
     margin-bottom: 5px;
 }
-
-.location .city sub {
-    vertical-align: super;
-    background-color: var(--firs-color);
-    color: var(--text-color);
-    padding: 2px 5px;
-    margin-left: 10px;
-    border-radius: 10px;
-    font-size: var(--details);
-}
   
-.location .date {
-    color: var(--text-color);
-    font-size: var(--details);
-}
 
 .current .icon {
     width: 150px;
     height: 150px;
     max-height: 100%;
-    margin-top: 10px;
-    margin-bottom: -10px;
+    margin-bottom: -20px;
     filter: invert(1);
 }
   
 .current .temp {
     color: var(--text-color);
-    font-size: var(--big);
-    font-weight: 900;
-}
-  
-.current .temp sub {
-    font-size: var(--header);
-    font-weight: 500;
-    vertical-align: super;
+    font-size: var(--temp);
 }
   
 .current .weather {
     color: var(--text-color);
-    font-size: var(--title);
-    font-weight: 700;
+    font-size: var(--weather);
 }
   
 .current .hi-low {
     color: var(--text-color);
-    font-size: var(--subtitle);
-    font-weight: 500;
+    font-size: var(--hi-low);
 }
 
 footer {
@@ -163,8 +160,8 @@ footer button {
 }
 
 footer i {
-    font-size: var(--title);
-    color: var(--text-color);
+    font-size: var(--hi-low);
+    color: var(--secondary-color);
 }
 
 footer button:hover i {

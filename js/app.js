@@ -3,6 +3,13 @@ const api = {
     base: "https://api.openweathermap.org/data/2.5/"
 }
 
+function getLocation(lat, lon) {
+    fetch(`${api.base}weather?lat=${lat}&lon=${lon}&appid=${api.key}`)
+        .then(weather => {
+            return weather.json();
+        }).then(displayResults)
+}
+
 const searchbox = document.querySelector('.search-box');
 searchbox.addEventListener('keypress', setQuery);
 
@@ -29,7 +36,7 @@ function getResults (query) {
         .then(weather => {
             return weather.json();
         }).then(displayResults)
-        .catch(toastAlert);
+        .catch(toastAlert('error', 'Wrong city'));
 }
 
 function displayResults (weather) {
@@ -70,7 +77,7 @@ function dateBuilder (d) {
 }
 
 
-function toastAlert () {
+function toastAlert (icon, title) {
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -84,8 +91,8 @@ function toastAlert () {
     })
       
     Toast.fire({
-        icon: 'error',
-        title: 'Wrong city'
+        icon: icon,
+        title: title
     })
 }
 
@@ -98,4 +105,20 @@ function periodoTiempo (tiempo) {
         card.classList.remove('night');
         card.classList.add('day');
     }
+}
+
+if("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(setPosition, showError);
+} else {
+    toastAlert('error', 'Geolocation is not supported by this browser');
+}
+  
+function setPosition(position){
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    getLocation(latitude, longitude);
+}
+  
+function showError(error) {
+    // console.log('error');
 }

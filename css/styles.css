@@ -22,27 +22,6 @@
     --hi-low: 26px;
 }
 
-@media screen and (max-width: 460px) {
-    header {
-        flex-direction: column;
-    }
-
-    .card {
-        margin-top: 20px;
-    }
-}
-
-@media screen and (max-width: 650px) {
-    :root {
-        --search: 16px;
-        --date: 16px;
-        --city: 26px;
-        --temp: 60px;
-        --weather: 28px;
-        --hi-low: 22px;
-    }
-}
-
 body {
     font-family: var(--font-text);
     font-weight: bold;
@@ -85,7 +64,7 @@ h3 {
     font-size: 24px;
     color: var(--firs-color);
 }
-  
+
 main {
     display: flex;
     flex: 1 1 100%;
@@ -124,7 +103,7 @@ main {
     font-weight: 500;
     margin-bottom: 5px;
 }
-  
+
 
 .current .icon {
     width: 150px;
@@ -133,17 +112,17 @@ main {
     margin-bottom: -20px;
     filter: invert(1);
 }
-  
+
 .current .temp {
     color: var(--text-color);
     font-size: var(--temp);
 }
-  
+
 .current .weather {
     color: var(--text-color);
     font-size: var(--weather);
 }
-  
+
 .current .hi-low {
     color: var(--text-color);
     font-size: var(--hi-low);
@@ -167,4 +146,51 @@ footer i {
 
 footer button:hover i {
     color: var(--firs-color);
+}
+
+@media screen and (max-width: 460px) {
+    header {
+        flex-direction: column;
+    }
+
+    .card {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    :root {
+        --search: 16px;
+        --date: 16px;
+        --city: 26px;
+        --temp: 60px;
+        --weather: 28px;
+        --hi-low: 22px;
+    }
+}
+
+@media screen and (min-width:600px) and (max-width:950px) and (orientation:landscape){
+    :root {
+        --search: 14px;
+        --date: 18px;
+        --city: 26px;
+        --temp: 60px;
+        --weather: 26px;
+        --hi-low: 20px;
+    }
+
+    .card {
+        max-width: clamp(400px, 100%, 600px);
+        height: 250px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .temp {
+        margin-left: -600px;
+        margin-top: -40px;
+    }
+    .weather {
+        margin-top: -40px;
+    }
 }

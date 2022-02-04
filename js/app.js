@@ -8,6 +8,7 @@ function getLocation(lat, lon) {
         .then(weather => {
             return weather.json();
         }).then(displayResults)
+        .catch( error => toastAlert('error', 'Wrong city'));
 }
 
 const searchbox = document.querySelector('.search-box');
@@ -36,7 +37,7 @@ function getResults (query) {
         .then(weather => {
             return weather.json();
         }).then(displayResults)
-        .catch(toastAlert('error', 'Wrong city'));
+        .catch( error => toastAlert('error', 'Wrong city'));
 }
 
 function displayResults (weather) {
